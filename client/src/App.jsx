@@ -19,7 +19,10 @@ function App() {
 
   return (
     <div className="App">
-        <div className="joinChatContainer">
+        <div class="container" className="joinChatContainer">
+          <div className='img-container'>
+            <img src="./chat-logo.png" alt="" />
+          </div>
           <h3>Join A Chat</h3>
           <input
             type="text"
