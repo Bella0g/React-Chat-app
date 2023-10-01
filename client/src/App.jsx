@@ -23,10 +23,10 @@ function App() {
           <div className='img-container'>
             <img src="./chat-logo.png" alt="" />
           </div>
-          <h3>Join A Chat</h3>
+          <h3>Chat Lounge</h3>
           <input
             type="text"
-            placeholder="John..."
+            placeholder="User name.."
             onChange={(event) => {
               setUsername(event.target.value);
             }}

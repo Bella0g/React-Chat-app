@@ -8,8 +8,22 @@
   flex-direction: column;
 }
 
+.joinChatContainer {
+  text-align: center;
+  margin-top: 1rem;
+}
+
 .img-container {
-  width: 5rem;
+  width: 8rem;
+  margin: 0 auto;
+}
+
+.img-container img {
+  width: 100%;
+}
+
+input {
+  font-size: .8em;
 }
 
 h3 {
