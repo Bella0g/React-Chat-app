@@ -19,7 +19,6 @@ function App() {
 
   return (
     <div className="App">
-      {!showChat ? (
         <div className="joinChatContainer">
           <h3>Join A Chat</h3>
           <input
@@ -38,9 +37,9 @@ function App() {
           />
           <button onClick={joinRoom}>Join A Room</button>
         </div>
-      ) : (
+
         <Chat socket={socket} username={username} room={room} />
-      )}
+  
     </div>
   );
 }
