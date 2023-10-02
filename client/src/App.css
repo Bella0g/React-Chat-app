@@ -15,7 +15,17 @@ body {
 
 /* Light theme */
 #light {
-  background-color: #f3ebf6;
+  background-color:#FFF ;
+  --primary-focus: rgba(0, 172, 193, 0.125);
+}
+
+#light h3 {
+  color: #004852;
+}
+
+#light input {
+    background-color: #f3f3f3d1;
+    color: #11191f;
 }
 
 /* Dark theme */
@@ -49,7 +59,7 @@ p {
   font-size: 1.2em;
 }
 
-/* chat */ 
+/* chat */
 .chat-window {
   width: 80vw;
   height: 100%;
