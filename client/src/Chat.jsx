@@ -19,6 +19,8 @@ function Chat({ socket, username, room }) {
             };
              // Send the message data to the server
             await socket.emit("send_message", messageData);
+            setMessageList((list) => [...list, messageData]);
+            
         }
     };
 
@@ -27,6 +29,11 @@ function Chat({ socket, username, room }) {
         socket.on("receive_message", (data) => {
             setMessageList((list) => [...list, data]);
         });
+
+        // socket event listener when the component unmounts
+        return () => {
+            socket.off("receive_message");
+        };
     }, [socket]);
 
     return (
@@ -35,12 +42,37 @@ function Chat({ socket, username, room }) {
                 <p>Live Chat</p>
             </div>
             <div className="chat-body">
-
+                {messageList.map((messageContent) => {
+                    return (
+                        <div
+                            className="message"
+                            id={username === messageContent.author ? "you" : "other"}
+                        >
+                            <div>
+                                <div className="message-content">
+                                    <p>{messageContent.message}</p>
+                                </div>
+                                <div className="message-meta">
+                                    <p id="time">{messageContent.time}</p>
+                                    <p id="author">{messageContent.author}</p>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
             <div className="chat-footer">
-                <input type='text' placeholder='hey..' onChange={(event) => {
-                    setCurrentMessage(event.target.value);
-                }} />
+                <input
+                    type="text"
+                    value={currentMessage}
+                    placeholder="Hey..."
+                    onChange={(event) => {
+                        setCurrentMessage(event.target.value);
+                    }}
+                    onkeydown={(event) => {
+                        event.key === "Enter" && sendMessage();
+                    }}
+                />
                 <button onClick={sendMessage}>&#9658;</button>
             </div>
         </div >
