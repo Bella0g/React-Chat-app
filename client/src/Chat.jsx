@@ -20,7 +20,7 @@ function Chat({ socket, username, room }) {
              // Send the message data to the server
             await socket.emit("send_message", messageData);
             setMessageList((list) => [...list, messageData]);
-            
+            setCurrentMessage("");
         }
     };
 
@@ -38,9 +38,13 @@ function Chat({ socket, username, room }) {
 
     return (
         <div className='chat-window'>
+
+            {/* Chat header */}
             <div className="chat-header">
                 <p>Live Chat</p>
             </div>
+
+            {/* Chat body */}
             <div className="chat-body">
                 {messageList.map((messageContent) => {
                     return (
@@ -49,9 +53,13 @@ function Chat({ socket, username, room }) {
                             id={username === messageContent.author ? "you" : "other"}
                         >
                             <div>
+
+                                {/* Message content */}
                                 <div className="message-content">
                                     <p>{messageContent.message}</p>
                                 </div>
+
+                                {/* Message meta info (time and author) */}
                                 <div className="message-meta">
                                     <p id="time">{messageContent.time}</p>
                                     <p id="author">{messageContent.author}</p>
@@ -61,6 +69,8 @@ function Chat({ socket, username, room }) {
                     );
                 })}
             </div>
+
+            {/* Chat footer */}
             <div className="chat-footer">
                 <input
                     type="text"
@@ -69,8 +79,11 @@ function Chat({ socket, username, room }) {
                     onChange={(event) => {
                         setCurrentMessage(event.target.value);
                     }}
-                    onkeydown={(event) => {
-                        event.key === "Enter" && sendMessage();
+                    onKeyDown={(event) => {
+                        if (event.key === "Enter") {
+                            event.preventDefault(); // Prevents the newline
+                            sendMessage(); // Send the message when Enter is pressed
+                        }
                     }}
                 />
                 <button onClick={sendMessage}>&#9658;</button>
