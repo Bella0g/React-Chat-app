@@ -27,7 +27,7 @@ function JoinChat() {
     <div className="joinChatContainer">
       {/* UI for joining a chat room */}
       <div className='img-container'>
-        <img src="./chat-logo.png" alt="" />
+        <img src="./chat-logo.png" alt="Chat lounge logo" />
       </div>
       <h3>Chat Lounge</h3>
       <input

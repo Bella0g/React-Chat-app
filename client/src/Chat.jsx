@@ -4,11 +4,11 @@ import ScrollToBottom from "react-scroll-to-bottom";
 function Chat({ socket, username, room }) {
     const [currentMessage, setCurrentMessage] = useState(""); // State to hold the current message being composed
     const [messageList, setMessageList] = useState([]); // State to hold the list of messages in the chat
-    
+
     const sendMessage = async () => {
         // Check if the message is not empty
         if (currentMessage !== "") {
-             // Create a message data object
+            // Create a message data object
             const messageData = {
                 room: room,
                 author: username,
@@ -18,7 +18,7 @@ function Chat({ socket, username, room }) {
                     ":" +
                     new Date(Date.now()).getMinutes(),
             };
-             // Send the message data to the server
+            // Send the message data to the server
             await socket.emit("send_message", messageData);
             setMessageList((list) => [...list, messageData]);
             setCurrentMessage("");
@@ -39,8 +39,7 @@ function Chat({ socket, username, room }) {
 
     return (
         <div className='chat-window'>
-
-            {/* Chat header */}
+          {/* Chat header */}
             <div className="chat-header">
                 <p>Live Chat</p>
             </div>
@@ -48,28 +47,28 @@ function Chat({ socket, username, room }) {
             {/* Chat body */}
             <div className="chat-body">
                 <ScrollToBottom className="message-container">
-                {messageList.map((messageContent) => {
-                    return (
-                        <div
-                            className="message"
-                            id={username === messageContent.author ? "you" : "other"}
-                        >
-                            <div>
+                    {messageList.map((messageContent) => {
+                        return (
+                            <div
+                                className="message"
+                                id={username === messageContent.author ? "you" : "other"}
+                            >
+                                <div>
 
-                                {/* Message content */}
-                                <div className="message-content">
-                                    <p className="sent-message">{messageContent.message}</p>
-                                </div>
+                                    {/* Message content */}
+                                    <div className="message-content">
+                                        <p className="sent-message">{messageContent.message}</p>
+                                    </div>
 
-                                {/* Message meta info (time and author) */}
-                                <div className="message-meta">
-                                    <p id="time">{messageContent.time}</p>
-                                    <p id="author">{messageContent.author}</p>
+                                    {/* Message meta info (time and author) */}
+                                    <div className="message-meta">
+                                        <p id="time">{messageContent.time}</p>
+                                        <p id="author">{messageContent.author}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    );
-                })}
+                        );
+                    })}
                 </ScrollToBottom>
             </div>
 
