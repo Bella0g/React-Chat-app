@@ -13,6 +13,16 @@ body {
   height: 100%;
 }
 
+/* Light theme */
+#light {
+  background-color: #f3ebf6;
+}
+
+/* Dark theme */
+#dark {
+  background-color: #11191f;
+}
+
 /* join */
 .joinChatContainer {
   text-align: center;

@@ -1,12 +1,23 @@
 import './App.css';
-import io from "socket.io-client";
-import { useState } from "react";
-import { BrowserRouter as Router, Route, link } from 'react-router-dom';
 import Chat from "./Chat";
-// add routing to switch between join and chat and context by adding a theme
+import io from "socket.io-client";
+import {  createContext, useState } from "react";
+import ReactSwitch from "react-switch";
+import { BrowserRouter as Router, Route, link } from 'react-router-dom';
+
+// add routing to switch between join and chat
+// add global state and context with theme
 const socket = io.connect("http://localhost:3001");
 
+export const ThemeContext = createContext(null);
+
 function App() {
+
+  const [theme, setTheme] = useState("dark");
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  };
+
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [showChat, setShowChat] = useState(false);
@@ -19,7 +30,12 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+    <div className="App" id={theme}>
+        <div className="switch">
+          <label> {theme === "light" ? "Light" : "Dark"}</label>
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+        </div>
       {!showChat ? (
         <div class="container" className="joinChatContainer">
           <div className='img-container'>
@@ -46,6 +62,7 @@ function App() {
         <Chat socket={socket} username={username} room={room} />
       )}
     </div>
+    </ThemeContext.Provider>
   );
 }
 
