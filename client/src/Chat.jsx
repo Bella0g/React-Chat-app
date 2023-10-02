@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 function Chat({ socket, username, room }) {
-    const [currentMessage, setCurrentMessage] = useState("");
+    const [currentMessage, setCurrentMessage] = useState(""); // State to hold the current message being composed
+    const [messageList, setMessageList] = useState([]); // State to hold the list of messages in the chat
     
-
     const sendMessage = async () => {
+        // Check if the message is not empty
         if (currentMessage !== "") {
+             // Create a message data object
             const messageData = {
                 room: room,
                 author: username,
@@ -15,14 +17,15 @@ function Chat({ socket, username, room }) {
                     ":" +
                     new Date(Date.now()).getMinutes(),
             };
-
-            await socket.emit("send_message", messageData);;
+             // Send the message data to the server
+            await socket.emit("send_message", messageData);
         }
     };
 
+    // Listen for incoming messages from the socket and update the message list
     useEffect(() => {
         socket.on("receive_message", (data) => {
-            console.log(data);
+            setMessageList((list) => [...list, data]);
         });
     }, [socket]);
 
