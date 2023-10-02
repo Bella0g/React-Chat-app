@@ -8,6 +8,7 @@
 
 p {
   font-size: 1.2em;
+  color: #F8F6F4;
 }
 
 /* Light theme */
@@ -20,8 +21,12 @@ p {
   color: #013a42;
 }
 
+#light .chat-body {
+  background-color: #D8D9DA;
+}
+
 #light input {
-  background-color: #EEEDED;
+  background-color: #ffffff;
   color: #11191f;
   border: #e9e7e6d0 solid 1px;
 }
@@ -83,7 +88,7 @@ h3 {
 /* chat body */
 .chat-body {
   height: 40vw;
-  background: rgba(255, 255, 255, 0.152);
+  background: #61677A;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -109,8 +114,8 @@ h3 {
 
 /* message content */
 .message .message-content {
-  background-color: #28509b;
-  max-width: 120px;
+  background-color: #088395;
+  max-width: 25rem;
   border-radius: 5px;
   color: #fff;
   display: flex;
@@ -146,7 +151,7 @@ h3 {
 
 #other .message-content {
   justify-content: flex-start;
-  background-color: cornflowerblue;
+  background-color: #146C94;
 }
 
 #other .message-meta {
