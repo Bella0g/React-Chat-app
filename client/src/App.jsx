@@ -2,7 +2,7 @@ import './App.css';
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
-
+// add routing to switch between join and chat and context by adding a theme
 const socket = io.connect("http://localhost:3001");
 
 function App() {
