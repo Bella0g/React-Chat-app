@@ -6,7 +6,6 @@ body {
 }
 
 .App {
-  font-family: "Ubuntu", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,6 +33,10 @@ input {
 
 h3 {
   font-size: 1.5em;
+}
+
+p {
+  font-size: 1.2em;
 }
 
 /* chat */ 
@@ -81,9 +84,7 @@ h3 {
 }
 
 .message .message-content {
-  min-height: 40px;
-  max-width: 120px;
-  background-color: #4351a0;
+  background-color: #28509b;
   border-radius: 5px;
   color: white;
   display: flex;
@@ -96,6 +97,44 @@ h3 {
   word-break: break-word;
 }
 
+/* sent message */
+#you {
+  justify-content: flex-end;
+}
+
+#you .message-content {
+  justify-content: flex-end;
+}
+
+#you .message-meta {
+  justify-content: flex-end;
+  margin-left: 5px;
+}
+
+#other {
+  justify-content: flex-start;
+}
+
+#other .message-content {
+  justify-content: flex-start;
+  background-color: cornflowerblue;
+}
+
+#other .message-meta {
+  justify-content: flex-start;
+  margin-right: 5px;
+}
+
+.message-meta #author {
+  margin-left: 10px;
+}
+
+.chat-window .chat-body .message .message-meta {
+  display: flex;
+  font-size: 10px;
+}
+
+/* chat footer */
 .chat-window .chat-footer {
   height: 50px;
   border: 1px solid #263238;
