@@ -83,6 +83,7 @@ p {
   display: flex;
 }
 
+/* message content */
 .message .message-content {
   background-color: #28509b;
   border-radius: 5px;
@@ -97,7 +98,11 @@ p {
   word-break: break-word;
 }
 
-/* sent message */
+.sent-message {
+  font-size: .8em;
+}
+
+/* message placement */
 #you {
   justify-content: flex-end;
 }
