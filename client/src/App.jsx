@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className="App">
+      {!showChat ? (
         <div class="container" className="joinChatContainer">
           <div className='img-container'>
             <img src="./chat-logo.png" alt="" />
@@ -40,9 +41,9 @@ function App() {
           />
           <button onClick={joinRoom}>Join A Room</button>
         </div>
-
+      ) : (
         <Chat socket={socket} username={username} room={room} />
-  
+      )}
     </div>
   );
 }
