@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 
+
 function Chat({ socket, username, room }) {
     const [currentMessage, setCurrentMessage] = useState(""); // State to hold the current message being composed
     const [messageList, setMessageList] = useState([]); // State to hold the list of messages in the chat
@@ -88,6 +89,7 @@ function Chat({ socket, username, room }) {
                         }
                     }}
                 />
+                
                 <button onClick={sendMessage}>&#9658;</button>
             </div>
         </div >
