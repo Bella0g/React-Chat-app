@@ -15,7 +15,7 @@ p {
 
 /* Light theme styles */
 #light {
-  background-color: #F8F6F4;
+  background-color: #EEEDED;
 }
 
 #light h3 {
@@ -27,7 +27,7 @@ p {
 }
 
 #light .chat-body {
-  background-color: #FFFDFA;
+  background-color: #FFFFFF;
 }
 
 #light input {
@@ -183,6 +183,7 @@ h3 {
 }
 
 .chat-window .chat-footer input {
+  background-color: #2a303ae8;
   flex: 85%;
   height: 100%;
   font-size: .9em;
