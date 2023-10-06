@@ -10,7 +10,7 @@
 /* Styles for paragraphs */
 p {
   font-size: 1.2em;
-  color: #f3f2f2;
+  color: #ffffff;
 }
 
 /* Light theme styles */
@@ -26,19 +26,18 @@ p {
   color: #fffffff1;
 }
 
+#light .message-meta p {
+  color: #494e57;
+}
+
 #light .chat-body {
   background-color: #FFFFFF;
 }
 
 #light input {
-  background-color: #eff6fcd2;
+  background-color: #eff6fce3;
     color: #001C30;
     border: #f6f6f6 solid 1px;
-}
-
-/* Dark theme styles */
-#dark {
-  background-color: #11191f;
 }
 
 /* Styles for the theme switch button */
@@ -95,10 +94,11 @@ h3 {
 
 /* Styles for the chat body */
 .chat-body {
-  height: 25rem;
+  height: 60vh;
   background: #3E4756;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  overflow-y: auto;
 }
 
 /* Styles for the message container */
