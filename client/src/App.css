@@ -1,3 +1,4 @@
+/* Styles for the main application container */
 .App {
   display: flex;
   flex-direction: column;
@@ -6,19 +7,23 @@
   height: 100vh;
 }
 
+/* Styles for paragraphs */
 p {
   font-size: 1.2em;
   color: #E7E7E7;
 }
 
-/* Light theme */
+/* Light theme styles */
 #light {
   background-color: #F8F6F4;
-  --primary-focus: rgba(0, 172, 193, 0.125);
 }
 
 #light h3 {
   color: #005269;
+}
+
+#light .chat-header p {
+  color: #fcfefe;
 }
 
 #light .chat-body {
@@ -31,12 +36,12 @@ p {
   border: #e9e7e6d0 solid 1px;
 }
 
-/* Dark theme */
+/* Dark theme styles */
 #dark {
   background-color: #11191f;
 }
 
-/* Theme Switch */
+/* Styles for the theme switch button */
 .switch {
   position: absolute;
   top: 10px;
@@ -44,12 +49,13 @@ p {
   padding: 5px;
 }
 
-/* join */
+/* Styles for the join chat container */
 .joinChatContainer {
   text-align: center;
   width: 60vw;
 }
 
+/* Styles for the image container */
 .img-container {
   display: flex;
   flex-direction: column;
@@ -62,7 +68,9 @@ p {
   width: 12vw;
 }
 
-input {
+/* General input and header styles */
+input,
+h3 {
   font-size: .8em;
 }
 
@@ -70,13 +78,13 @@ h3 {
   font-size: 1.5em;
 }
 
-/* chat */
+/* Styles for the chat window */
 .chat-window {
   width: 80vw;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-/* chat header */
+/* Styles for the chat header */
 .chat-header {
   height: 8vh;
   background: #1e2b30a4;
@@ -85,38 +93,38 @@ h3 {
   padding: 0 1rem;
 }
 
-/* chat body */
+/* Styles for the chat body */
 .chat-body {
-  height: 40vw;
+  height: 25rem;
   background: #3E4756;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
 
+/* Styles for the message container */
 .chat-window .chat-body .message-container {
   width: 100%;
-  height: 100%;
   overflow-y: scroll;
   overflow-x: hidden;
   scrollbar-width: none;
 }
 
-/* message container */
 .message-container::-webkit-scrollbar {
   display: none;
 }
 
+/* Styles for each chat message */
 .chat-window .chat-body .message {
   padding: 10px;
   display: flex;
   height: auto;
 }
 
-/* message content */
+/* Styles for the message content */
 .message .message-content {
   background-color: #088395;
   max-width: 25rem;
-  border-radius: 5px;
+  border-radius: 15px;
   color: #fff;
   display: flex;
   align-items: center;
@@ -127,24 +135,22 @@ h3 {
   word-break: break-word;
 }
 
+/* Styles for sent messages */
 .sent-message {
   font-size: .8em;
 }
 
-/* message placement */
+/* Styles for your messages */
 #you {
   justify-content: flex-end;
 }
 
-#you .message-content {
-  justify-content: flex-end;
-}
-
+#you .message-content,
 #you .message-meta {
   justify-content: flex-end;
-  margin-left: 5px;
 }
 
+/* Styles for others' messages */
 #other {
   justify-content: flex-start;
 }
@@ -159,6 +165,7 @@ h3 {
   margin-right: 5px;
 }
 
+/* Styles for message metadata and author */
 .message-meta #author {
   margin-left: 10px;
 }
@@ -168,7 +175,7 @@ h3 {
   font-size: 10px;
 }
 
-/* chat footer */
+/* Styles for the chat footer */
 .chat-window .chat-footer {
   height: 50px;
   border: none;
