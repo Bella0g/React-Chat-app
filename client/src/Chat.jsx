@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import ScrollToBottom from "react-scroll-to-bottom";
 
 
-function Chat({ socket, username, room }) {
+
+function Chat({ socket }) {
     const [currentMessage, setCurrentMessage] = useState(""); // State to hold the current message being composed
     const [messageList, setMessageList] = useState([]); // State to hold the list of messages in the chat
+    const { room, username } = useParams();
 
     const sendMessage = async () => {
         // Check if the message is not empty
@@ -19,6 +22,7 @@ function Chat({ socket, username, room }) {
                     ":" +
                     new Date(Date.now()).getMinutes(),
             };
+
             // Send the message data to the server
             await socket.emit("send_message", messageData);
             setMessageList((list) => [...list, messageData]);
@@ -28,19 +32,19 @@ function Chat({ socket, username, room }) {
 
     // Listen for incoming messages from the socket and update the message list
     useEffect(() => {
+        // Create a socket connection
+        console.log('Socket connected:', socket);
+
+        socket.off("receive_message");
         socket.on("receive_message", (data) => {
+            if (data.author === username) return;
             setMessageList((list) => [...list, data]);
         });
-
-        // socket event listener when the component unmounts
-        return () => {
-            socket.off("receive_message");
-        };
-    }, [socket]);
+    }, [room, username]);
 
     return (
         <div className='chat-window'>
-          {/* Chat header */}
+            {/* Chat header */}
             <div className="chat-header">
                 <p>Live Chat</p>
             </div>
@@ -89,7 +93,7 @@ function Chat({ socket, username, room }) {
                         }
                     }}
                 />
-                
+
                 <button onClick={sendMessage}>&#9658;</button>
             </div>
         </div >

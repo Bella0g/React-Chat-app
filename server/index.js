@@ -27,9 +27,10 @@ io.on("connection", (socket) => {
         console.log(`User with ID: ${socket.id} joined room: ${data}`);
     });
 
-     // Event handler for when a client sends a "send_message" message
+    // Event handler for when a client sends a "send_message" message
     socket.on("send_message", (data) => {
-        socket.to(data.room).emit("receive_message", data)
+        console.log(data);
+        socket.to(data.room).emit("receive_message", data);
     });
 
     // Event handler for when a client disconnects from the Socket.io server

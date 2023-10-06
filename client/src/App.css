@@ -8,7 +8,7 @@
 
 p {
   font-size: 1.2em;
-  color: #F8F6F4;
+  color: #E7E7E7;
 }
 
 /* Light theme */
@@ -18,15 +18,15 @@ p {
 }
 
 #light h3 {
-  color: #013a42;
+  color: #005269;
 }
 
 #light .chat-body {
-  background-color: #D8D9DA;
+  background-color: #FFFDFA;
 }
 
 #light input {
-  background-color: #ffffff;
+  background-color: #eff6fcd2;
   color: #11191f;
   border: #e9e7e6d0 solid 1px;
 }
@@ -88,7 +88,7 @@ h3 {
 /* chat body */
 .chat-body {
   height: 40vw;
-  background: #61677A;
+  background: #3E4756;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
 }
@@ -179,13 +179,14 @@ h3 {
   flex: 85%;
   height: 100%;
   font-size: .9em;
-  border: 0;
+  border-radius: 0;
   font-family: "Open Sans", sans-serif;
 }
 
 .chat-window .chat-footer button {
   flex: 10%;
   height: 100%;
+  border-radius: 0;
   font-size: 20px;
   cursor: pointer;
 }

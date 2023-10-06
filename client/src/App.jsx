@@ -1,12 +1,11 @@
 import './App.css';
 import Chat from "./Chat";
 import io from "socket.io-client";
-import {  createContext, useState } from "react";
 import ReactSwitch from "react-switch";
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
+import { createContext, useState } from "react";
+import { BrowserRouter, Route, Routes, Link, useNavigate } from 'react-router-dom';
 
-// Create a socket connection
-const socket = io.connect("http://localhost:3001");
+let socket = io.connect("http://localhost:3001");
 
 // Create a context to manage the theme globally
 export const ThemeContext = createContext(null);
@@ -15,11 +14,13 @@ function JoinChat() {
   // State for managing username and room
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
+  const navigate = useNavigate();
 
   // Function to join a chat room
   const joinRoom = () => {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
+      navigate("/chat/"+username+"/"+room);
     }
   };
 
@@ -44,9 +45,7 @@ function JoinChat() {
           setRoom(event.target.value);
         }}
       />
-      <Link to={`/chat/${username}/${room}`}>
         <button onClick={joinRoom}>Join A Room</button>
-      </Link>
     </div>
   );
 }
@@ -63,17 +62,17 @@ function App() {
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-    <div className="App" id={theme}>
+      <div className="App" id={theme}>
         <div className="switch">
           <label> {theme === "light" ? "Light" : "Dark"}</label>
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </div>
-        
+
         {/* Routes */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<JoinChat />} />
-            <Route path="/chat/:username/:room" element={<Chat socket={socket} />} />
+            <Route path="/chat/:username/:room" element={<Chat  socket={socket} />} />
           </Routes>
         </BrowserRouter>
       </div>
