@@ -26,7 +26,7 @@ You need to have Node.js and npm (Node Package Manager) installed on your system
 ### Installation
 1. Clone the repository to your local machine using:
     ```html
-    git clone https://github.com/your-username/react-chat-app.git
+    git clone https://github.com/Bella0g/react-chat-app.git
     
 2. Navigate to the project directory:
     ```html
